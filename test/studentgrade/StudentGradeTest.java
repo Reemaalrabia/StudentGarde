@@ -1,35 +1,76 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package studentgrade;
 
-import junit.framework.TestCase;
+import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
+import static org.junit.Assert.*;
 
-/* JUnit 3.8.1 */
-public class StudentGradeTest extends TestCase {
+/**
+ *
+ * @author HP
+ */
+public class StudentGradeTest {
     
-    public StudentGradeTest(String testName) {
-        super(testName);
-    }
-
-    public void testGetGrade95() {
-        System.out.println("getGrade 95");
-        int mark = 95;
-        String expResult = "A";
-        String result = StudentGrade.getGrade(mark);
-        assertEquals(expResult, result);
-    }
-
-    public void testGetGrade85() {
-        System.out.println("getGrade 85");
-        int mark = 85;
-        String expResult = "B";
-        String result = StudentGrade.getGrade(mark);
-        assertEquals(expResult, result);
+    public StudentGradeTest() {
     }
     
-    public void testGetGrade75() {
-        System.out.println("getGrade 85");
-        int mark = 75;
-        String expResult = "F";
-        String result = StudentGrade.getGrade(mark);
-        assertEquals(expResult, result);
+    @BeforeClass
+    public static void setUpClass() {
     }
+    
+    @AfterClass
+    public static void tearDownClass() {
+    }
+    
+    @Before
+    public void setUp() {
+    }
+    
+    @After
+    public void tearDown() {
+    }
+
+ // check if the grade was 90 it will gave use A 
+    @Test
+    public void testGetGradeA() {
+        assertEquals("A", StudentGrade.getGrade(90));
+    }
+    
+    // check if we intered 101 if it is not A
+    @Test
+    public void testGetGradeNotA() {
+        assertNotEquals("A", StudentGrade.getGrade(101));
+    }
+    
+    // test grade B upper boundary
+    @Test
+    public void testGetGradeB() {
+        assertEquals("B", StudentGrade.getGrade(89));
+    }
+    
+    // test grade B lower boundary
+    @Test
+    public void testGetGradeB1() {
+        assertEquals("B", StudentGrade.getGrade(80));
+    }
+    
+    // test F grade
+    @Test
+    public void testGetGradeF() {
+        assertEquals("F", StudentGrade.getGrade(79));
+    }
+    
+    // test grade 0
+    @Test
+    public void testGetGradeF1() {
+        assertEquals("F", StudentGrade.getGrade(0));
+    }
+
 }
